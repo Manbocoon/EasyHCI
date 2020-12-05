@@ -1,0 +1,22 @@
+C:\Users\Administrator\Desktop\EasyHCI\bin\x86\Debug\EasyHCI.exe.config
+C:\Users\Administrator\Desktop\EasyHCI\bin\x86\Debug\EasyHCI.exe
+C:\Users\Administrator\Desktop\EasyHCI\bin\x86\Debug\EasyHCI.pdb
+C:\Users\Administrator\Desktop\EasyHCI\obj\x86\Debug\EasyHCI.MainForm.resources
+C:\Users\Administrator\Desktop\EasyHCI\obj\x86\Debug\EasyHCI.Properties.Resources.resources
+C:\Users\Administrator\Desktop\EasyHCI\obj\x86\Debug\EasyHCI.csproj.GenerateResource.cache
+C:\Users\Administrator\Desktop\EasyHCI\obj\x86\Debug\EasyHCI.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\EasyHCI\obj\x86\Debug\EasyHCI.csproj.Fody.CopyLocal.cache
+C:\Users\Administrator\Desktop\EasyHCI\obj\x86\Debug\EasyHCI.exe
+C:\Users\Administrator\Desktop\EasyHCI\obj\x86\Debug\EasyHCI.pdb
+C:\Users\Administrator\Desktop\EasyHCI\obj\x86\Debug\EasyHCI.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\EasyHCI - 복사본\obj\x86\Debug\EasyHCI.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\EasyHCI - 복사본\obj\x86\Debug\EasyHCI.MainForm.resources
+C:\Users\Administrator\Desktop\EasyHCI - 복사본\obj\x86\Debug\EasyHCI.Properties.Resources.resources
+C:\Users\Administrator\Desktop\EasyHCI - 복사본\obj\x86\Debug\EasyHCI.csproj.GenerateResource.cache
+C:\Users\Administrator\Desktop\EasyHCI - 복사본\obj\x86\Debug\EasyHCI.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\EasyHCI - 복사본\obj\x86\Debug\EasyHCI.exe
+C:\Users\Administrator\Desktop\EasyHCI - 복사본\obj\x86\Debug\EasyHCI.pdb
+C:\Users\Administrator\Desktop\EasyHCI - 복사본\bin\x86\Debug\EasyHCI.exe.config
+C:\Users\Administrator\Desktop\EasyHCI - 복사본\bin\x86\Debug\EasyHCI.exe
+C:\Users\Administrator\Desktop\EasyHCI - 복사본\bin\x86\Debug\EasyHCI.pdb
+C:\Users\Administrator\Desktop\EasyHCI - 복사본\obj\x86\Debug\EasyHCI.csproj.Fody.CopyLocal.cache

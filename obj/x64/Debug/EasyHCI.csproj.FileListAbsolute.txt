@@ -1,0 +1,11 @@
+C:\Users\Administrator\Desktop\EasyHCI\bin\x64\Debug\EasyHCI.exe.config
+C:\Users\Administrator\Desktop\EasyHCI\bin\x64\Debug\EasyHCI.exe
+C:\Users\Administrator\Desktop\EasyHCI\bin\x64\Debug\EasyHCI.pdb
+C:\Users\Administrator\Desktop\EasyHCI\obj\x64\Debug\EasyHCI.MainForm.resources
+C:\Users\Administrator\Desktop\EasyHCI\obj\x64\Debug\EasyHCI.Properties.Resources.resources
+C:\Users\Administrator\Desktop\EasyHCI\obj\x64\Debug\EasyHCI.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\EasyHCI\obj\x64\Debug\EasyHCI.exe
+C:\Users\Administrator\Desktop\EasyHCI\obj\x64\Debug\EasyHCI.pdb
+C:\Users\Administrator\Desktop\EasyHCI\obj\x64\Debug\EasyHCI.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\EasyHCI\obj\x64\Debug\EasyHCI.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\EasyHCI\obj\x64\Debug\EasyHCI.csproj.Fody.CopyLocal.cache
