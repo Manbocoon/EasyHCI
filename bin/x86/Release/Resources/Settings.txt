@@ -1,0 +1,18 @@
+목표치: 800
+백그라운드 실행: True
+테스트 유형: Auto
+
+끝날 때 스크린샷: True
+주기적인 스크린샷: False
+주기적인 스크린샷 값(분): 60
+스크린샷 저장폴더: C:\Users\Administrator\Desktop\Programs\Computer Information\HCI Memtest\HCI Screenshots
+
+소리알림 반복 횟수: 3
+통과 알림파일 경로: C:\Users\Administrator\Desktop\Programs\Computer Information\HCI Memtest\Resources\success.wav
+오류 알림파일 경로: C:\Users\Administrator\Desktop\Programs\Computer Information\HCI Memtest\Resources\error.wav
+
+마지막에 끌 항목: Memtest
+
+창 배치 간격(x축): 240
+창 배치 간격(y축): 230
+프로그램이 켜질 때 즉시 테스트: True
