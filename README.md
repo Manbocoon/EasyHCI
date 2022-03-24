@@ -6,13 +6,13 @@
 ## 테스트 방법  
   1. 프로그램을 실행하여 "테스트 시작" 버튼을 누릅니다.  
     
-  <img src="https://user-images.githubusercontent.com/74810045/159885823-b1c0b38f-530d-448e-b92b-1a49247f4c6a.png"  width="470" height="350">  
+  <img src="https://user-images.githubusercontent.com/74810045/159885823-b1c0b38f-530d-448e-b92b-1a49247f4c6a.png"  width="470" height="290">  
     
     
     
   2. 목표치를 설정하고 기다립니다. 나머지 설정은 자유입니다. 설정, 사용법에 관하여 궁금한 것이 있다면 하드웨어 커뮤니티인 쿨엔조이/퀘이사존 등에 질문해보세요.
     
-  <img src="https://user-images.githubusercontent.com/74810045/159886082-3a8b84e8-1cce-461e-bdd0-82e333620239.png"  width="470" height="350">  
+  <img src="https://user-images.githubusercontent.com/74810045/159886082-3a8b84e8-1cce-461e-bdd0-82e333620239.png"  width="470" height="290">  
     
     
     
