@@ -10,7 +10,7 @@
     
     
     
-  2. 목표치를 설정하고 기다립니다. 나머지 설정은 자유입니다.
+  2. 목표치를 설정하고 기다립니다. 나머지 설정은 필수가 아니며, 자유입니다.
     
   <img src="https://user-images.githubusercontent.com/74810045/159886082-3a8b84e8-1cce-461e-bdd0-82e333620239.png"  width="470" height="250">  
     
