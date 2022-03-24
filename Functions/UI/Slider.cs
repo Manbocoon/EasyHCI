@@ -1,5 +1,5 @@
 ﻿// Custom UI - Slider Control
-// Modified and Added some codes from here ▽
+// Used the code from here, and modified/added some codes ▽
 // https://stackoverflow.com/questions/70465326/how-to-draw-a-custom-slider-control
 
 
