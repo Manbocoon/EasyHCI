@@ -140,11 +140,7 @@ namespace EasyHCI.Forms
                 return;
             }
 
-            if (Error_Occured)
-                soundPlayer.PlayMusicOnBackground(notify_error_path.Text, repeat_count);
-
-            else
-                soundPlayer.PlayMusicOnBackground(notify_success_path.Text, repeat_count);          
+            soundPlayer.PlayMusicOnBackground(notify_error_path.Text, repeat_count, Error_Occured);
         }
 
 
@@ -191,12 +187,6 @@ namespace EasyHCI.Forms
         {
             if (notify_test.BackColor.G > 100)
             {
-                if (!File.Exists(notify_success_path.Text) || !File.Exists(notify_error_path.Text))
-                {
-                    MessageBox.Show("통과 알림음, 오류 알림음 중 존재하지 않는 파일이 있습니다.", "오류", 0, MessageBoxIcon.Error);
-                    return;
-                }
-
                 ushort volume = ushort.Parse(notify_volume.Text);
                 if (volume > 100)
                     volume = 100;
@@ -210,8 +200,8 @@ namespace EasyHCI.Forms
 
                 _soundTestThread = new Thread(() =>
                 {
-                    soundPlayer.PlayMusic(notify_success_path.Text, 1);
-                    soundPlayer.PlayMusic(notify_error_path.Text, 1);
+                    soundPlayer.PlayMusic(notify_success_path.Text, 1, false);
+                    soundPlayer.PlayMusic(notify_error_path.Text, 1, true);
 
                     this.Invoke((MethodInvoker)delegate ()
                     { SetButtonState(notify_test, false, "소리알림 테스트"); });
@@ -251,7 +241,7 @@ namespace EasyHCI.Forms
         }
 
         private HCI_Memtest[] HCI = new HCI_Memtest[1];
-        private uint CPUThreads = 0, screen_width = 0, screen_height = 0, test_count = 0, test_ammount = 0, error_count = 0;
+        private uint CPUThreads = 0, screen_width = 0, screen_height = 0, test_count = 0, test_ammount = 0, error_index = 0;
         private void StartTest()
         {
             byte capHour = (byte)DateTime.Now.Hour, capMinute = (byte)DateTime.Now.Minute;
@@ -527,7 +517,7 @@ namespace EasyHCI.Forms
 
             // 모니터링 준비
             error_occured = false;
-            error_count = 0; coverage_min = 0; coverage_max = 0;
+            error_index = 0; coverage_min = 0; coverage_max = 0;
             capHour = (byte)DateTime.Now.Hour; capMinute = (byte)DateTime.Now.Minute;
           
             // 테스트 경과시간 타이머 시작
@@ -574,7 +564,7 @@ namespace EasyHCI.Forms
                         if (errorCount_txt.ToString() != "0개")
                         {
                             error_occured = true;
-                            error_count = (uint)index + 1;
+                            error_index = (uint)index + 1;
                         }
 
                         // 최소치, 평균치, 최대값, 편차 등을 알아내기 위해 값 저장
@@ -589,6 +579,13 @@ namespace EasyHCI.Forms
 
                         else if (coverage_max < HCI[index].coverage_value)                         
                             coverage_max = HCI[index].coverage_value; 
+
+                        // 임시 코드
+                        if (coverage_min > 5.0)
+                        {
+                            error_occured = true;
+                            ++error_index;
+                        }
                     }
                 }
 
@@ -603,8 +600,6 @@ namespace EasyHCI.Forms
                     // 테스트 정상시작했으므로 이제 유저가 중단가능 //
                     test.Enabled = true;
                 });
-
-
 
 
                 // 테스트 상태 판단 후 뒤처리
@@ -649,7 +644,7 @@ namespace EasyHCI.Forms
                     _msgThread.IsBackground = true;
                     _msgThread.Start();
 
-                    Thread.Sleep(200);
+                    Thread.Sleep(250);
 
                     if (screenshot_after.Checked)
                         screenshot.Screenshot(screenshot_path.Text, GetScreenshotRGBQuality());
@@ -663,7 +658,7 @@ namespace EasyHCI.Forms
                     return;
                 }
 
-
+                
                 else if (error_occured)
                 {
                     WriteTestLog();
@@ -673,7 +668,7 @@ namespace EasyHCI.Forms
                     if (finish_closeTest.Checked)
                         KillMemtest();
 
-                    PlayMusic(false);
+                    PlayMusic(true);
 
                     this.Invoke((MethodInvoker)delegate ()
                     {
@@ -690,7 +685,7 @@ namespace EasyHCI.Forms
                     _msgThread.IsBackground = true;
                     _msgThread.Start();
 
-                    Thread.Sleep(200);
+                    Thread.Sleep(250);
 
                     if (screenshot_after.Checked)
                         screenshot.Screenshot(screenshot_path.Text, GetScreenshotRGBQuality());
@@ -853,6 +848,7 @@ namespace EasyHCI.Forms
 
             app_settings.Append('\n' + new SizeConverter().ConvertToString(this.Size));
 
+            Directory.CreateDirectory(appPath + "\\Resources");
             File.WriteAllText(appPath + @"\Resources\Settings.ini", app_settings.ToString(), new UTF8Encoding(false));
         }
 
@@ -932,7 +928,7 @@ namespace EasyHCI.Forms
         {
             Process[] processes = Process.GetProcessesByName("memtest");
 
-            for (int index = 0; index < processes.Length; index++)
+            for (int index = 0; index < processes.Length; ++index)
             {
                 try { processes[index].Kill(); processes[index].Dispose(); }
                 catch (Exception) { }
@@ -954,16 +950,13 @@ namespace EasyHCI.Forms
             IntPtr ErrMsgHwnd = IntPtr.Zero, ErrChildHwnd;
             ErrMsg.Clear(); finalRecord.Clear();
 
-
             if (error_occured)
             {
-                // 오류 메세지 찾을 때까지
-                while (ErrMsgHwnd == IntPtr.Zero)
+                for (int i=0; i<20; ++i)
                 {
                     ErrMsgHwnd = FindWindow("#32770", "멤테스트 오류");
-                    Thread.Sleep(10);
+                    Thread.Sleep(100);
                 }
-                Thread.Sleep(20);
 
                 ErrChildHwnd = FindWindowEx(ErrMsgHwnd, IntPtr.Zero, "Static", null);
 
@@ -982,7 +975,7 @@ namespace EasyHCI.Forms
 
             // 오류정보 추가기록
             if (error_occured) 
-                finalRecord.Append("\r\n\r\n[오류 정보]\r\n" + error_count + "번째 멤테스트에서 오류 발생\r\n" + ErrMsgHwnd.ToString()); 
+                finalRecord.Append("\r\n\r\n[오류 정보]\r\n" + error_index + "번째 프로세스에서 오류 발생\r\n" + ErrMsg.ToString()); 
             
             finalRecord.Append("\r\n---------------------------------\r\n\r\n\r\n");
 
@@ -1059,13 +1052,21 @@ namespace EasyHCI.Forms
             // memtest.exe 존재유무 확인
             if (!File.Exists(appPath + "\\Resources\\memtest.exe"))
             {
-                start_success = false;
-                MessageBox.Show(appPath + "\\Resources\\memtest.exe\r\n\r\n memtest 실행파일이 발견되지 않았습니다.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Directory.CreateDirectory(appPath + "\\Resources");
+
+                File.WriteAllBytes(appPath + "\\Resources\\memtest.exe", Properties.Resources.memtest);
             }
 
             // 메모리 정리
             if (MessageBox.Show("테스트 할 메모리 공간을 확보하기 위해 불필요한 모든 프로세스를 모두 종료하시겠습니까?\r\n\r\n※ 중요한 작업을 하고 있다면 미리 백업해주시거나, 예외처리 해주십시오.", "메모리 정리", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                if (!File.Exists(Program.Path + "\\Resources\\Process_Exceptions.ini"))
+                {
+                    Directory.CreateDirectory(Program.Path + "\\Resources");
+
+                    File.WriteAllText(Program.Path + "\\Resources\\Process_Exceptions.ini", Properties.Resources.Process_Exceptions_Default, new UTF8Encoding(false));
+                }
+
                 using (var cleanMem = new cleanMemory())
                     cleanMem.clean_memory();
             }
@@ -1150,7 +1151,7 @@ namespace EasyHCI.Forms
                 if (button.Image != null)
                     button.Image = null;
 
-                button.Image = Image.FromFile(appPath + @"\Resources\test_stop.png");
+                button.Image = Properties.Resources.test_stop;
 
                 button.Text = baseString + " 중단";
             }
@@ -1165,8 +1166,8 @@ namespace EasyHCI.Forms
 
                 if (button.Image != null)
                     button.Image = null;
-               
-                button.Image = Image.FromFile(appPath + @"\Resources\test_play.png");
+
+                button.Image = Properties.Resources.test_play;
 
                 button.Text = baseString + " 시작";
             }
@@ -1219,7 +1220,6 @@ namespace EasyHCI.Forms
                         HCI[index].coverage_label.Dispose();
                     if (HCI[index].error_label != null)
                         HCI[index].error_label.Dispose();
-
 
                 }
 
@@ -1402,6 +1402,7 @@ namespace EasyHCI.Forms
                 finish_closePC.Checked = false;
             
         }
+
 
         #endregion
 
