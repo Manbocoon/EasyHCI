@@ -40,12 +40,17 @@ namespace EasyHCI.Functions
         }
 
 
-        public void PlayMusic(string file_url, uint repeat_count)
+        public void PlayMusic(string file_url, uint repeat_count, bool error_occured)
         {
-            if (!File.Exists(file_url))
-                return;
-
             System.Media.SoundPlayer soundPlayer = new System.Media.SoundPlayer(file_url);
+
+            if (!File.Exists(file_url))
+            {
+                if (error_occured)
+                    soundPlayer = new System.Media.SoundPlayer(Properties.Resources.error);
+                else
+                    soundPlayer = new System.Media.SoundPlayer(Properties.Resources.success);
+            }
 
             for (uint index=0; index<repeat_count; ++index)
             {
@@ -70,11 +75,11 @@ namespace EasyHCI.Functions
             soundPlayer.Dispose();
         }
 
-        public void PlayMusicOnBackground(string file_url, uint repeat_count)
+        public void PlayMusicOnBackground(string file_url, uint repeat_count, bool error_occured)
         {
             TerminateMusic();
 
-            _soundThread = new Thread(() => PlayMusic(file_url, repeat_count));
+            _soundThread = new Thread(() => PlayMusic(file_url, repeat_count, error_occured));
             _soundThread.IsBackground = true;
             _soundThread.Start();
         }
