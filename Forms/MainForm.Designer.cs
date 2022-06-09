@@ -141,7 +141,7 @@
             this.check_version.BackColor = System.Drawing.Color.Transparent;
             this.check_version.DisabledLinkColor = System.Drawing.Color.White;
             this.check_version.LinkColor = System.Drawing.Color.White;
-            this.check_version.Location = new System.Drawing.Point(135, 38);
+            this.check_version.Location = new System.Drawing.Point(140, 38);
             this.check_version.Name = "check_version";
             this.check_version.Size = new System.Drawing.Size(81, 12);
             this.check_version.TabIndex = 6;
@@ -1535,7 +1535,7 @@
             this.MinimumSize = new System.Drawing.Size(322, 250);
             this.Name = "MainForm";
             this.Opacity = 0.9D;
-            this.Text = "EasyHCI 1.0.8";
+            this.Text = "EasyHCI 1.0.8B";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
