@@ -100,6 +100,12 @@ namespace EasyHCI.Forms
 
         private void SelectExceptedProcesses()
         {
+            if (!File.Exists(file_path))
+            {
+                Directory.CreateDirectory(Program.Path + "\\Resources");
+
+                File.WriteAllText(file_path, Properties.Resources.Process_Exceptions_Default, new UTF8Encoding(false));
+            }
 
             string[] file = File.ReadAllLines(file_path, new UTF8Encoding(false));
             for (int i_list=0; i_list<list.Items.Count; ++i_list)
