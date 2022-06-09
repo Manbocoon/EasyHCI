@@ -59,5 +59,75 @@ namespace EasyHCI.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   System.IO.MemoryStream과(와) 유사한 System.IO.UnmanagedMemoryStream 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream error {
+            get {
+                return ResourceManager.GetStream("error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   System.Byte[] 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static byte[] memtest {
+            get {
+                object obj = ResourceManager.GetObject("memtest", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   # 예외처리할 프로세스를 한 줄에 하나씩 써주세요.
+        ///# 대소문자를 구별하지 않으셔도 됩니다.
+        ///# 윈도우 구동에 필요한 기본 프로세스들은 적지 않으셔도 예외처리됩니다.
+        ///# 가장 앞에 #을 붙이거나 아무것도 입력하지 않은 줄은 주석처리 되어 무시됩니다.
+        ///
+        ///# -------------------
+        ///# ---이 밑에 입력---
+        ///# -------------------
+        ///
+        ///hwinfo32.exe
+        ///hwinfo64.exe
+        ///zentimings.exe
+        ///zentimings-legacy.exe
+        ///aida64.exe과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Process_Exceptions_Default {
+            get {
+                return ResourceManager.GetString("Process_Exceptions_Default", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   System.IO.MemoryStream과(와) 유사한 System.IO.UnmanagedMemoryStream 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream success {
+            get {
+                return ResourceManager.GetStream("success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap test_play {
+            get {
+                object obj = ResourceManager.GetObject("test_play", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap test_stop {
+            get {
+                object obj = ResourceManager.GetObject("test_stop", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
