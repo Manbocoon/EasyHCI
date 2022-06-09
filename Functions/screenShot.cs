@@ -59,6 +59,7 @@ namespace EasyHCI.Functions
 
             try 
             {
+                Directory.CreateDirectory(Program.Path + "\\Screenshots");
                 ScreenBitmap.Save(screenshot_path + "\\" + DateTime.Now.ToString("(yyyy년 MM월 dd일) hh시 mm분 ss초") + ".png", ImageFormat.Png);
             }
 
