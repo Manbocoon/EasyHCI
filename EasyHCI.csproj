@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EasyHCI</RootNamespace>
     <AssemblyName>EasyHCI</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -118,6 +118,7 @@
     <Compile Include="Functions\cleanMemory.cs" />
     <Compile Include="Functions\getRamInfo.cs" />
     <Compile Include="Functions\screenShot.cs" />
+    <Compile Include="Functions\settings_manager.cs" />
     <Compile Include="Functions\soundPlayer.cs" />
     <Compile Include="Functions\UI\Slider.cs">
       <SubType>Component</SubType>
@@ -146,6 +147,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Resources\app.manifest" />
     <None Include="Resources\packages.config" />
@@ -163,7 +165,10 @@
     <None Include="Resources\App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\error.wav" />
     <Content Include="Resources\hangeul.ico" />
+    <None Include="Resources\success.wav" />
+    <None Include="Resources\memtest.exe" />
     <Content Include="Resources\test_play.png" />
     <Content Include="Resources\test_stop.png" />
   </ItemGroup>
