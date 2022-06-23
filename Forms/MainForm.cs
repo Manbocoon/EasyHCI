@@ -1638,8 +1638,7 @@ namespace EasyHCI.Forms
 
             data = data.Remove(0, data.IndexOf('<') + 1);
             data = data.Remove(0, data.IndexOf(' ') + 1);
-            data = data.Remove(data.IndexOf('·') - 1, data.Length - data.IndexOf('·') + 1);
-            data = data.Remove(0, 8);
+            data = data.Remove(data.IndexOf('·') - 1, data.Length - data.IndexOf('·') + 1);         
 
             DialogResult user_input = MessageBox.Show("현재 버전: " + app_version + "\r\n최신 버전: " + data + "\r\n\r\n최신버전 파일이 올려진 사이트로 이동할까요?", "알림", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             
