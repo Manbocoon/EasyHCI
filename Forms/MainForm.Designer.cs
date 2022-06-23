@@ -1535,7 +1535,7 @@
             this.MinimumSize = new System.Drawing.Size(322, 250);
             this.Name = "MainForm";
             this.Opacity = 0.9D;
-            this.Text = "EasyHCI 1.0.8B";
+            this.Text = "EasyHCI 1.0.8C";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
