@@ -580,12 +580,6 @@ namespace EasyHCI.Forms
                         else if (coverage_max < HCI[index].coverage_value)                         
                             coverage_max = HCI[index].coverage_value; 
 
-                        // 임시 코드
-                        if (coverage_min > 5.0)
-                        {
-                            error_occured = true;
-                            ++error_index;
-                        }
                     }
                 }
 
