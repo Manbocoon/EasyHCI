@@ -160,14 +160,16 @@ namespace EasyHCI.Forms
                     bool already_exist = false;
                     if (process_filePath == null)
                         already_exist = true;
-
-                    for (int i_exist=0; i_exist< check_exist.Count; ++i_exist)
+                    else
                     {
-                        if (Path.GetFileName(process_filePath).ToLower().Trim() == check_exist[i_exist].ToLower())
+                        for (int i_exist = 0; i_exist < check_exist.Count; ++i_exist)
                         {
-                            already_exist = true;
-                            break;
-                        }                                   
+                            if (Path.GetFileName(process_filePath).ToLower().Trim() == check_exist[i_exist].ToLower())
+                            {
+                                already_exist = true;
+                                break;
+                            }
+                        }
                     }
 
                     if (already_exist)                  
