@@ -122,7 +122,7 @@ namespace EasyHCI.Forms
 
             this.Invoke((MethodInvoker)delegate ()
             {
-                elapsed_time.Text = "경과 시간: " + (time_span.Hours + "시간 ") + (time_span.Minutes + "분 ") + (time_span.Seconds + "초");
+                elapsed_time.Text = "경과 시간: " + (time_span.Days * 24 + time_span.Hours + "시간 ") + (time_span.Minutes + "분 ") + (time_span.Seconds + "초");
                 remained_time.Text = "남은 시간: " + (hour + "시간 ") + (minute + "분 ") + (second + "초");
             });
         }
