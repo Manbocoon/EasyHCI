@@ -53,7 +53,7 @@ namespace EasyHCI.Forms
             this.list.TabIndex = 60;
             this.list.UseCompatibleStateImageBehavior = false;
             this.list.View = System.Windows.Forms.View.Details;
-            this.list.Click += new System.EventHandler(this.list_Click);
+            this.list.MouseClick += new System.Windows.Forms.MouseEventHandler(this.list_MouseClick);
             // 
             // Column1
             // 

@@ -235,16 +235,28 @@ namespace EasyHCI.Forms
             addToExceptions.Size = new Size(this.Width - 24, 48);
         }
 
-        private void list_Click(object sender, EventArgs e)
+        private void list_MouseClick(object sender, MouseEventArgs e)
         {
-            
-            ListView.SelectedIndexCollection selects = list.SelectedIndices;
+            ListViewItem targetItem = list.GetItemAt(e.X, e.Y);
+            ListView.SelectedIndexCollection selectedIndices = list.SelectedIndices;
 
-            list.Items[selects[selects.Count - 1]].Checked = !list.Items[selects[selects.Count - 1]].Checked;
+            if (selectedIndices.Count == 0)
+            {
+                targetItem.Selected = true;
+            }
+
+            else
+            {
+                ListViewItem selectedItem = list.Items[selectedIndices[0]];
+                if (targetItem != selectedItem)
+                {
+                    targetItem.Selected = true;
+                }
+            }
+
+            if (e.X > 19)
+                targetItem.Checked = targetItem.Selected;
         }
-
-
-
 
         private List<string> added_items = new List<string>();
         private List<string> removed_items = new List<string>();
